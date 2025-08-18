@@ -17,6 +17,7 @@ function App() {
 
   return (
     <div>
+      <p>{greeting}</p>
       <form onSubmit={handleSubmit}>
         <input value={username} onChange={(e) => setUsername(e.target.value)} />
         <button type="submit">Send</button>
