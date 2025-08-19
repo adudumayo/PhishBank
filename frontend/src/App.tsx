@@ -1,8 +1,9 @@
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [username, setUsername] = useState<string>("");
-  const [greeting, setGreeting] = useState<string>("");
+  const [OTP, setOTP] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -12,17 +13,16 @@ function App() {
       body: JSON.stringify({ username }),
     });
     const text = await response.text();
-    setGreeting(text);
+    setOTP(text);
   };
 
   return (
     <div>
-      <p>{greeting}</p>
+      <p>{OTP}</p>
       <form onSubmit={handleSubmit}>
         <input value={username} onChange={(e) => setUsername(e.target.value)} />
         <button type="submit">Send</button>
       </form>
-      <p>{greeting}</p>
     </div>
   );
 }
