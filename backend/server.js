@@ -2,8 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const sqlite3 = require("sqlite3").verbose();
-
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,10 +16,16 @@ const db = new sqlite3.Database("./database.sqlite", (err) => {
   }
 });
 
+let username = ""; // do not recommend global vars
 
 app.post("/submit", (req, res) => {
-    const username = req.body.username || "";
+    username = req.body.username || "";
   res.send(`e-mail from PhishBank: Hello, ${username}!`);
+});
+
+app.get("/otp", (req, res) => {
+  const otp = "12345"
+  res.send(`${username}: ${otp}`);
 });
 
 app.listen(5000, () => console.log("Server running on port 5000"));
