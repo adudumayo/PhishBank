@@ -20,7 +20,7 @@ let username = ""; // do not recommend global vars
 
 app.post("/submit", (req, res) => {
     username = req.body.username || "";
-  res.send(`e-mail from PhishBank: Hello, ${username}!`);
+    res.send(`e-mail from PhishBank: Hello, ${username}! Your OTP is 123-456`);
 });
 
 app.get("/flag", (req, res) => {
