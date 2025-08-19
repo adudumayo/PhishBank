@@ -8,13 +8,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = new sqlite3.Database("./database.sqlite", (err) => {
+/*const db = new sqlite3.Database("./database.sqlite", (err) => {
   if (err) {
     console.error("Error opening database:", err.message);
   } else {
     console.log("Connected to SQLite database.");
   }
-});
+});*/
 
 let username = ""; // do not recommend global vars
 
@@ -23,9 +23,9 @@ app.post("/submit", (req, res) => {
   res.send(`e-mail from PhishBank: Hello, ${username}!`);
 });
 
-app.get("/otp", (req, res) => {
-  const otp = "12345"
-  res.send(`${username}: ${otp}`);
+app.get("/flag", (req, res) => {
+  const flag = "{ACCESS_GRANTED}"
+  res.send(`${username}${flag}`);
 });
 
 app.listen(5000, () => console.log("Server running on port 5000"));

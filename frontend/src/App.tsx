@@ -21,8 +21,9 @@ function App() {
     setCanGoAhead(true);
   };
 
-  const handleFlag = async () => {
-    const response = await fetch("http://localhost:5000/otp", { method:"GET", });
+  const handleFlagAccess = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/flag", { method:"GET", });
     const serverFlag = await response.text();
     setFlag(serverFlag);
   };
@@ -40,7 +41,7 @@ function App() {
       </form>
       <h3>{greeting}</h3>
 
-      <form onSubmit={handleFlag}>
+      <form onSubmit={handleFlagAccess}>
         <input value={OTP} placeholder="OTP" onChange={(e) => setOTP(e.target.value)} />
         <button disabled={!canGoAhead}>Log In</button>
       </form>
