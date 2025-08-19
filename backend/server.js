@@ -19,7 +19,7 @@ const db = new sqlite3.Database("./database.sqlite", (err) => {
 
 app.post("/submit", (req, res) => {
     const username = req.body.username || "";
-  res.send(`e-mail from PhishBank: Hello, ${username}! We see you are trying to log in`);
+  res.send(`e-mail from PhishBank: Hello, ${username}!`);
 });
 
 app.listen(5000, () => console.log("Server running on port 5000"));
