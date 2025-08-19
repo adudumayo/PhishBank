@@ -3,7 +3,6 @@ import "./App.css";
 
 function App() {
   const [username, setUsername] = useState<string>("");
-  const [greeting, setGreeting] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [canGoAhead, setCanGoAhead] = useState<boolean>(false);
   const [OTP, setOTP] = useState<string>("");
@@ -17,7 +16,7 @@ function App() {
       body: JSON.stringify({ username }),
     });
     const text = await response.text();
-    setGreeting(text);
+    alert(text);
     setCanGoAhead(true);
   };
 
@@ -35,11 +34,10 @@ function App() {
       <form onSubmit={handleSubmit}>
         <input value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
         <br></br>
-        <input value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+        <input value={password} type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
         <br></br>
         <button type="submit">Get OTP</button>
       </form>
-      <h3>{greeting}</h3>
 
       <form onSubmit={handleFlagAccess}>
         <input value={OTP} placeholder="OTP" onChange={(e) => setOTP(e.target.value)} />
