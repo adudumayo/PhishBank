@@ -9,6 +9,10 @@ body {
   margin: 0;
 }
 
+#invalidCreds {
+  color: red;
+}
+
 div {
   background-color: #ffffff;
   padding: 40px;

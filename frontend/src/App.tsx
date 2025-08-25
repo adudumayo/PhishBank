@@ -17,10 +17,13 @@ function App() {
       body: JSON.stringify({ username }),
     });
     const text = await response.text();
-    alert(text);
+
     if (text === "Your username or password is incorrect, try again") {
-      setCanGoAhead(false);
+      setInvalidCreds(true);
+      setUsername("");
+      setPassword("");
     } else {
+      alert(text);
       setCanGoAhead(true);
     }
   };
@@ -40,6 +43,7 @@ function App() {
         <input value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
         <br></br>
         <input value={password} type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+        {invalidCreds && <p id="invalidCreds">Your username or password is incorrect</p>}
         <br></br>
         <button type="submit">Get OTP</button>
       </form>
