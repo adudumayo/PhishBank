@@ -14,7 +14,7 @@ function App() {
     const response = await fetch("http://localhost:5000/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username }),
+      body: JSON.stringify({ username, password }),
     });
     const text = await response.text();
 
@@ -43,7 +43,7 @@ function App() {
         <input value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
         <br></br>
         <input value={password} type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-        {invalidCreds && <p id="invalidCreds">Your username or password is incorrect</p>}
+        {invalidCreds && <p id="invalidCreds">Your username or password is incorrect, try again.</p>}
         <br></br>
         <button type="submit">Get OTP</button>
       </form>
