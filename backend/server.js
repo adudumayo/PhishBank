@@ -20,8 +20,9 @@ let username = ""; // do not recommend global vars
 
 app.post("/submit", (req, res) => {
     username = req.body.username || "";
+    password = req.body.password || "";
     
-    if (username === "user1") {
+    if (username === "user1" && password === "pass1") {
       res.send(`e-mail from PhishBank: Hello, ${username}! Your OTP is 123-456`);
     } else {
       res.send(`Your username or password is incorrect, try again`);
