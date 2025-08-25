@@ -5,6 +5,7 @@ function App() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [canGoAhead, setCanGoAhead] = useState<boolean>(false);
+  const [invalidCreds, setInvalidCreds] = useState<boolean>(false);
   const [OTP, setOTP] = useState<string>("");
   const [flag, setFlag] = useState<string>("");
 
@@ -17,7 +18,11 @@ function App() {
     });
     const text = await response.text();
     alert(text);
-    setCanGoAhead(true);
+    if (text === "Your username or password is incorrect, try again") {
+      setCanGoAhead(false);
+    } else {
+      setCanGoAhead(true);
+    }
   };
 
   const handleFlagAccess = async (e: React.FormEvent) => {
